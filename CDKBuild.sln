@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CDKBuild", "CDKBuild\CDKBuild.csproj", "{A40FF496-BE2F-4DE7-AE9B-657EEC38B7BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A40FF496-BE2F-4DE7-AE9B-657EEC38B7BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A40FF496-BE2F-4DE7-AE9B-657EEC38B7BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A40FF496-BE2F-4DE7-AE9B-657EEC38B7BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A40FF496-BE2F-4DE7-AE9B-657EEC38B7BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5CD94DB4-96E8-41AA-B157-429F23DE8E42}
+	EndGlobalSection
+EndGlobal

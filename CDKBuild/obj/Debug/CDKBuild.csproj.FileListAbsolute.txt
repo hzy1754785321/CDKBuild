@@ -1,0 +1,13 @@
+C:\Users\ychi\source\repos\CDKBuild\CDKBuild\bin\Debug\CDKBuild.exe.config
+C:\Users\ychi\source\repos\CDKBuild\CDKBuild\bin\Debug\CDKBuild.exe
+C:\Users\ychi\source\repos\CDKBuild\CDKBuild\bin\Debug\CDKBuild.pdb
+C:\Users\ychi\source\repos\CDKBuild\CDKBuild\bin\Debug\CSkin.dll
+C:\Users\ychi\source\repos\CDKBuild\CDKBuild\bin\Debug\CSkin.xml
+C:\Users\ychi\source\repos\CDKBuild\CDKBuild\obj\Debug\CDKBuild.csprojAssemblyReference.cache
+C:\Users\ychi\source\repos\CDKBuild\CDKBuild\obj\Debug\CDKBuild.Form1.resources
+C:\Users\ychi\source\repos\CDKBuild\CDKBuild\obj\Debug\CDKBuild.Properties.Resources.resources
+C:\Users\ychi\source\repos\CDKBuild\CDKBuild\obj\Debug\CDKBuild.csproj.GenerateResource.cache
+C:\Users\ychi\source\repos\CDKBuild\CDKBuild\obj\Debug\CDKBuild.csproj.CoreCompileInputs.cache
+C:\Users\ychi\source\repos\CDKBuild\CDKBuild\obj\Debug\CDKBuild.csproj.CopyComplete
+C:\Users\ychi\source\repos\CDKBuild\CDKBuild\obj\Debug\CDKBuild.exe
+C:\Users\ychi\source\repos\CDKBuild\CDKBuild\obj\Debug\CDKBuild.pdb
