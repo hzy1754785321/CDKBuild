@@ -156,10 +156,10 @@ namespace CDKBuild
                         using (StreamWriter sw = new StreamWriter(fs, Encoding.Default))
                         {
                             StringBuilder sb_csvStr = new StringBuilder();
-                            for (int i = 0; i < copyList.Count; i++)//<--row
+                            for (int i = 0; i < copyList.Count; i++)
                             {
                                 sb_csvStr.Clear();
-                                for (int j = 0; j < copyList[i].Length; j++)//<--col
+                                for (int j = 0; j < copyList[i].Length; j++)
                                 {
                                     sb_csvStr.Append(string.Format("{0}", copyList[i][j].ToString()));
                                 }
