@@ -16,6 +16,7 @@ namespace CDKBuild
 
         public List<string> pro = new List<string>();
         public List<string> yuanList = new List<string>();
+        public List<string> copyList = new List<string>();
         public Stopwatch stop = new Stopwatch();
         public Thread thread;
         public Thread thread1;
@@ -121,15 +122,21 @@ namespace CDKBuild
             {
                 if (!thread.IsAlive && !thread1.IsAlive)
                 {
-                    List<string> copyList = new List<string>();
 
                     Hashtable hash = new Hashtable();
-                    foreach (string str in yuanList)//源LIST去重
+                    foreach (string str in yuanList)
                     {
-                        if (!hash.ContainsKey(str))
+                        if (str != null)
                         {
-                            hash.Add(str, str);
-                            copyList.Add(str);//把不重复的列加入
+                            if (!hash.ContainsKey(str))
+                            {
+                                hash.Add(str, str);
+                                copyList.Add(str);
+                            }
+                            else
+                            {
+                                repeat++;
+                            }
                         }
                         else
                         {
@@ -137,13 +144,13 @@ namespace CDKBuild
                         }
                     }
                     stop.Stop();
-                    successText.Text = showList.Items.Count.ToString();
-                    repeatText.Text = repeat.ToString();
+                    var supply = Supply(number-copyList.Count);
+                    repeatText.Text = string.Format("{0}个    已补充{1}个",repeat,supply);
                     timeText.Text = stop.Elapsed.TotalSeconds + "s";
+                    successText.Text = yuanList.Count.ToString();
                     var csv = new StringBuilder();
                     var time = DateTime.Now.Date.ToString("-yyyy-MM-dd");
-                    MessageBox.Show(tableName.Text + time + ".csv");
-                    var csvPath = Path.Combine(Application.StartupPath, tableName.Text + time + ".csv");
+                    var csvPath = Path.Combine(Application.StartupPath, type + id +"-" + tableName.Text + time + ".csv");
                     using (FileStream fs = new FileStream(csvPath.Trim(), FileMode.OpenOrCreate, FileAccess.ReadWrite))
                     {
                         using (StreamWriter sw = new StreamWriter(fs, Encoding.Default))
@@ -168,6 +175,48 @@ namespace CDKBuild
 
         }
 
+        public int Supply(int number)
+        {
+            var randCount = Convert.ToInt32(lengthText.Text) - 6;
+            int supply = 0;
+            for (int x = 0; x < number; x++)
+            {
+                Random rand = new Random(GetRandomSeed());
+                int start = (int)Math.Pow(10, randCount);
+                int end = 99 * (int)Math.Pow(10, randCount);
+                var randNumber = rand.Next(start, end);
+                var time = DateTime.UtcNow;
+                var timeTemp = Encoding.UTF8.GetBytes(time.ToString());
+                var typeTemp = Encoding.UTF8.GetBytes(id + type);
+                var randTemp = new byte[randCount];
+                rand.NextBytes(randTemp);
+                var temp = new byte[4];
+                for (int i = 0, j = timeTemp.Length - 1; i < 4; i++, j--)
+                {
+                    temp[i] = (byte)(timeTemp[j] ^ typeTemp[i] ^ randTemp[i]);
+                }
+                var ts = BitConverter.ToInt32(temp, 0);
+                var str = Convert.ToString(ts, 16);
+                var idStr = str.Take(5).ToArray();
+                var strRand = Convert.ToString(randNumber, 16);
+                var randTemps = strRand.Take(randCount).ToArray();
+                List<char> r = new List<char>();
+                r.AddRange(idStr);
+                r.AddRange(randTemps);
+                var source = r.ToArray();
+                var check = (int)(CalSum(source) ^ 0xFF) % 16;  
+                var checksum = Convert.ToString(check, 16);
+                r.Clear();
+                r.AddRange(source);
+                r.AddRange(checksum);
+                source = r.ToArray();
+                var tss = string.Join("", source).ToUpper();
+                showList.Items.Add(tss);
+                copyList.Add(tss);
+                supply++;
+            }
+            return supply;
+        }
         public static int CalSum(char[] idstr)
         {
             int ret = 0;
@@ -181,11 +230,11 @@ namespace CDKBuild
         static int GetRandomSeed()
         {
             byte[] bytes = new byte[4];
-            System.Security.Cryptography.RNGCryptoServiceProvider rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
-            rng.GetBytes(bytes);
-            return BitConverter.ToInt32(bytes, 0);
+            using (var rng = new System.Security.Cryptography.RNGCryptoServiceProvider())
+            {
+                rng.GetBytes(bytes);
+                return BitConverter.ToInt32(bytes, 0);
+            }
         }
-
-       
     }
 }

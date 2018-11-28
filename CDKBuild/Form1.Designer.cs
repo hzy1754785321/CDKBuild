@@ -184,7 +184,7 @@
             // timeText
             // 
             this.timeText.AutoSize = true;
-            this.timeText.Location = new System.Drawing.Point(77, 74);
+            this.timeText.Location = new System.Drawing.Point(68, 74);
             this.timeText.Name = "timeText";
             this.timeText.Size = new System.Drawing.Size(0, 12);
             this.timeText.TabIndex = 17;
@@ -192,7 +192,7 @@
             // repeatText
             // 
             this.repeatText.AutoSize = true;
-            this.repeatText.Location = new System.Drawing.Point(77, 44);
+            this.repeatText.Location = new System.Drawing.Point(70, 44);
             this.repeatText.Name = "repeatText";
             this.repeatText.Size = new System.Drawing.Size(0, 12);
             this.repeatText.TabIndex = 16;
